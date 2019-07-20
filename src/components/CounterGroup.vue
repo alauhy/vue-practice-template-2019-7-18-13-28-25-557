@@ -1,7 +1,8 @@
 <template>
 
     <div id="CounterGroup">
-        <Count v-for="count in counterNum" :key="count"></Count>
+        <Count v-for="count in counterNum" :key="count" @incre="incre"
+               @desc="desc"></Count>
     </div>
 
 
@@ -13,14 +14,26 @@
     export default {
 
         name: "CounterGroup",
-        props:{
-            counterNum:Number
+        props: {
+            counterNum: Number,
         },
         components: {
             Count
         },
         data() {
             return {
+                totalCount: 0
+            }
+        },
+        methods: {
+            incre: function () {
+                this.totalCount ++;
+                this.bus.$emit('sentTotalCount',this.totalCount);
+            },
+            desc:function () {
+                this.totalCount --;
+                this.bus.$emit('sentTotalCount',this.totalCount);
+
             }
         }
     }

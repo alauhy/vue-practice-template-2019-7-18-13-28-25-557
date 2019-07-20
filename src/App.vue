@@ -2,19 +2,20 @@
     <div id="app">
         <input type="number" v-model="counterNum">
         <CounterGroup :counterNum="parseInt(counterNum)"></CounterGroup>
+        <CounterSum></CounterSum>
     </div>
 </template>
 
 <script>
-    import HelloWorld from './components/HelloWorld.vue'
-    import Count from './components/Count.vue'
+    import CounterSum from './components/CounterSum'
     import CounterGroup from './components/CounterGroup'
 
     export default {
         name: 'app',
 
         components: {
-            CounterGroup
+            CounterGroup,
+            CounterSum
         },
         data() {
             return {

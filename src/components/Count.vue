@@ -1,8 +1,8 @@
 <template>
     <div id="app">
-        <button v-on:click="desc" >-</button>
+        <button @click="desc" >-</button>
         <span>{{count}}</span>
-        <button v-on:click="incre">+</button>
+        <button @click="incre">+</button>
     </div>
 
 </template>
@@ -16,11 +16,13 @@
             }
         },
         methods:{
-            desc(){
-                this.count--
+            desc:function () {
+                this.count--;
+                this.$emit('desc')
             },
-            incre(){
-                this.count++
+            incre:function(){
+                this.count++;
+                this.$emit('incre');
             }
 
         }
